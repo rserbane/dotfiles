@@ -150,6 +150,19 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Disable warning messages for now
+vim.diagnostic.config({
+	virtual_text = {
+		severity = { min = vim.diagnostic.severity.ERROR }, -- Only show errors
+	},
+	signs = {
+		severity = { min = vim.diagnostic.severity.ERROR }, -- Only show errors
+	},
+	underline = {
+		severity = { min = vim.diagnostic.severity.ERROR }, -- Only underline errors
+	},
+})
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -264,6 +277,18 @@ require("lazy").setup({
 	-- Then, because we use the `config` key, the configuration only runs
 	-- after the plugin has been loaded:
 	--  config = function() ... end
+	{
+		"neovim/nvim-lspconfig", -- LSP configuration
+		config = function()
+			local lspconfig = require("lspconfig")
+
+			-- SourceKit-LSP setup
+			lspconfig.sourcekit.setup({
+				cmd = { "sourcekit-lsp" }, -- Ensure sourcekit-lsp is in your PATH
+				filetypes = { "swift", "objective-c", "objective-cpp" },
+			})
+		end,
+	},
 
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
@@ -803,7 +828,7 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
+			ensure_installed = { "bash", "c", "python", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
 			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = {
@@ -811,6 +836,7 @@ require("lazy").setup({
 				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
 				--  If you are experiencing weird indenting issues, add the language to
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+				disable = { "swift" },
 				additional_vim_regex_highlighting = { "ruby" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
