@@ -144,6 +144,9 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
