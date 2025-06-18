@@ -1,0 +1,12 @@
+-- Optionally: disable warning messages
+-- vim.diagnostic.config({
+-- 	virtual_text = {
+-- 		severity = { min = vim.diagnostic.severity.ERROR }, -- Only show errors
+-- 	},
+-- 	signs = {
+-- 		severity = { min = vim.diagnostic.severity.ERROR }, -- Only show errors
+-- 	},
+-- 	underline = {
+-- 		severity = { min = vim.diagnostic.severity.ERROR }, -- Only underline errors
+-- 	},
+-- })
