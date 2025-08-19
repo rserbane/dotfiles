@@ -30,7 +30,7 @@ mod1:
 
 # Second mod (default option + shift + control).
 mod2:
-  - option
+  # - option
   - shift
   - control
   - command
