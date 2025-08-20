@@ -176,7 +176,7 @@ select-column-layout:
   key: ','
 
 select-tall-layout:
-  mod: mod1
+  mod: mod2
   key: '.'
 
 
@@ -270,7 +270,7 @@ focus-follows-mouse: false
 mouse-swaps-windows: false
 
 # true if changing the frame of a window with the mouse should update the layout to accommodate the change (default false). Note that not all layouts will be able to respond to the change.
-mouse-resizes-windows: false
+mouse-resizes-windows: true
 
 # true to display the name of the layout when a new layout is selected (default true).
 enables-layout-hud: true
