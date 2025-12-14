@@ -2,6 +2,7 @@ eval "$(starship init zsh)"
 
 # vim 
 set -o vi
+export EDITOR='nvim'
 
 # general aliases
 alias lsa='ls -lah'
@@ -35,3 +36,4 @@ alias gr='git rebase'
 alias gm='git merge'
 
 alias gdc='git describe --contains'
+
