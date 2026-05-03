@@ -10,13 +10,12 @@ return {
 			{ "folke/neodev.nvim", opts = {} },
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-
 			-- SourceKit-LSP setup (Swift/ObjC)
-			lspconfig.sourcekit.setup({
+			vim.lsp.config("sourcekit", {
 				cmd = { "sourcekit-lsp" },
 				filetypes = { "swift", "objective-c", "objective-cpp" },
 			})
+			vim.lsp.enable("sourcekit")
 
 			-- LSP keymaps on attach
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -101,7 +100,8 @@ return {
 			-- Setup language servers
 			for name, opts in pairs(servers) do
 				opts.capabilities = vim.tbl_deep_extend("force", {}, capabilities, opts.capabilities or {})
-				lspconfig[name].setup(opts)
+				vim.lsp.config(name, opts)
+				vim.lsp.enable(name)
 			end
 		end,
 	},
